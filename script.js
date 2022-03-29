@@ -18,7 +18,13 @@ let map = [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
 
+let pacman = {
+  x: 8,
+  y: 4,
+};
+
 function drawWorld() {
+  document.getElementById("world").innerHTML = "";
   for (let y = 0; y < map.length; y++) {
     // console.log(map[y]);
     for (let x = 0; x < map[y].length; x++) {
@@ -40,4 +46,42 @@ function drawWorld() {
     document.getElementById("world").innerHTML += "<br>";
   }
 }
+
+document.onkeydown = function (e) {
+  console.log(e.keyCode);
+
+  if (e.keyCode === 37) {
+    // left
+    if (map[pacman.y][pacman.x - 1] !== 1) {
+      map[pacman.y][pacman.x] = 3;
+      pacman.x = pacman.x - 1;
+      map[pacman.y][pacman.x] = 5;
+      drawWorld();
+    }
+  } else if (e.keyCode === 38) {
+    // up
+    if (map[pacman.y - 1][pacman.x] !== 1) {
+      map[pacman.y][pacman.x] = 3;
+      pacman.y = pacman.y - 1;
+      map[pacman.y][pacman.x] = 5;
+      drawWorld();
+    }
+  } else if (e.keyCode === 39) {
+    // right
+    if (map[pacman.y][pacman.x + 1] !== 1) {
+      map[pacman.y][pacman.x] = 3;
+      pacman.x = pacman.x + 1;
+      map[pacman.y][pacman.x] = 5;
+      drawWorld();
+    }
+  } else if (e.keyCode === 40) {
+    // down
+    if (map[pacman.y + 1][pacman.x] !== 1) {
+      map[pacman.y][pacman.x] = 3;
+      pacman.y = pacman.y + 1;
+      map[pacman.y][pacman.x] = 5;
+      drawWorld();
+    }
+  }
+};
 drawWorld();
