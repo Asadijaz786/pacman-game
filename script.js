@@ -24,26 +24,26 @@ let pacman = {
 };
 
 function drawWorld() {
-  document.getElementById("world").innerHTML = "";
+  document.getElementById("gameCanvas").innerHTML = "";
   for (let y = 0; y < map.length; y++) {
     // console.log(map[y]);
     for (let x = 0; x < map[y].length; x++) {
       console.log(map[y][x]);
       if (map[y][x] === 1) {
-        document.getElementById("world").innerHTML +=
+        document.getElementById("gameCanvas").innerHTML +=
           "<div class='wall'></div>";
       } else if (map[y][x] === 2) {
-        document.getElementById("world").innerHTML +=
+        document.getElementById("gameCanvas").innerHTML +=
           "<div class='coin'></div>";
       } else if (map[y][x] === 3) {
-        document.getElementById("world").innerHTML +=
+        document.getElementById("gameCanvas").innerHTML +=
           "<div class='ground'></div>";
       } else if (map[y][x] === 5) {
-        document.getElementById("world").innerHTML +=
+        document.getElementById("gameCanvas").innerHTML +=
           "<div class='pacman'></div>";
       }
     }
-    document.getElementById("world").innerHTML += "<br>";
+    document.getElementById("gameCanvas").innerHTML += "<br>";
   }
 }
 
