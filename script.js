@@ -6,6 +6,8 @@
 // map = [ 1, 2, 3 ]
 // map = [ [1,2,3], [1,2,3], [1,2,3] ];
 
+const score = document.getElementById("score");
+
 let map = [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   [1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1],
@@ -56,6 +58,7 @@ document.onkeydown = function (e) {
       map[pacman.y][pacman.x] = 3;
       pacman.x = pacman.x - 1;
       map[pacman.y][pacman.x] = 5;
+      currentScore = currentScore + 1;
       drawWorld();
     }
   } else if (e.keyCode === 38) {
@@ -85,3 +88,13 @@ document.onkeydown = function (e) {
   }
 };
 drawWorld();
+
+let currentScore = 0;
+
+function addScores() {
+  for (let i = 0; i < map[y].length; i++) {
+    document.onkeydown += currentScore;
+    score.textContent = currentScore;
+  }
+}
+addScores();
